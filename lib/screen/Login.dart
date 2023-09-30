@@ -179,7 +179,7 @@ class _LoginState extends State<Login> {
                 height: 100,
                 width: 300,
                 color: Colors.grey,
-              ).withOnlyPadding(bottom: 30),
+              ).withOnlyPadding(top: 30),
 
               SizedBox(
                 height: MediaQuery.of(context).size.height * .1,

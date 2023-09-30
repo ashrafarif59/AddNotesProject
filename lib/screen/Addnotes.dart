@@ -9,22 +9,13 @@ import '../componenet/Textfield.dart';
 import '../componenet/button.dart';
 //import '../util/RounteName.dart';
 
-class Addnotes extends StatefulWidget {
-  const Addnotes({Key? key}) : super(key: key);
-
-  @override
-  State<Addnotes> createState() => _AddnotesState();
-}
-
-class _AddnotesState extends State<Addnotes> {
-  //List<Map<String, String>> notesList = [];
+class Addnotes extends StatelessWidget {
+  TextEditingController nameController = TextEditingController();
+  TextEditingController dataController = TextEditingController();
+  List<Map<String, String>> Notelist = [];
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController nameController = TextEditingController();
-    TextEditingController dataController = TextEditingController();
-    List<noteList> Notelist = [];
-
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -84,21 +75,33 @@ class _AddnotesState extends State<Addnotes> {
               child: Column(
                 children: [
                   PrimaryButton(
-                      title: "Save",
-                      bordercircular: 10,
-                      onPress: () {
-                        final note = noteList(
-                            name: nameController.text,
-                            Data: dataController.text);
-                        Notelist.add(note);
-                        nameController.clear();
-                        dataController.clear();
-                        // print(note.name);
+                    title: "Save",
+                    bordercircular: 10,
+                    onPress: () {
+                      String name = nameController.text;
+                      String data = dataController.text;
 
-                        Navigator.pop(context, Notelist);
-                      },
-                      iconNameColor: AppColors.primaryColor,
-                      iconYN: false),
+                      Map<String, String> note = {
+                        'title': name,
+                        'note': data,
+                      };
+
+                      // final note = noteList(
+                      //   name: nameController.text,
+                      //   Data: dataController.text,
+                      // );
+
+                      Notelist.add(note);
+                      nameController.clear();
+                      dataController.clear();
+
+                      print(Notelist);
+
+                      Navigator.pop(context, Notelist);
+                    },
+                    iconNameColor: AppColors.primaryColor,
+                    iconYN: false,
+                  ),
                 ],
               ),
             )

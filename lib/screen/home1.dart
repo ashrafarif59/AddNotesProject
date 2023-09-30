@@ -14,19 +14,27 @@ class home1 extends StatefulWidget {
 class _home1State extends State<home1> {
 //  List<noteList> Notelist=[];
 //List<notelist> NoteList=[noteList(name: ., Data: Data)]
-  List<noteList> Note = [];
+//   List<noteList> Note = [];
+  List<Map<String, String>> NotesList = [];
 
-  @override
+  // @override
 //adddata(Note);
 
   @override
   Widget build(BuildContext context) {
     //print(Note)
-    return Note.isNotEmpty
+    return NotesList.isNotEmpty
         ? Scaffold(
             backgroundColor: Colors.red,
-            body: Container(
-              child: Text('a'),
+            body: ListView.builder(
+              itemCount: NotesList.length,
+              itemBuilder: (context, index) => Container(
+                color: Colors.yellow,
+                child: ListTile(
+                  title: Text(NotesList[index]['title'] ?? ''),
+                  subtitle: Text(NotesList[index]['note'] ?? ''),
+                ),
+              ),
             ),
           )
         : Scaffold(
