@@ -1,5 +1,4 @@
-class noteList
-{
+class noteList {
   final String name;
   final String Data;
 
